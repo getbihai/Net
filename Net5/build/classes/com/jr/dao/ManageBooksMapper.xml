@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jr.dao.ManageBooksMapper">
+    <insert id="addManageBooks" parameterType="ManageBooks">
+        insert into netbook.managebooks (uid,bookID,ismb,mbCounts,mbStartDay,mbEndDay,isjs,jsCounts,jsStartDay,jsEndDay,
+        isxj,xjCounts,xjcs,xjStartDay,xjEndDay,mbOther)
+        values (#{uid},#{bookID},#{ismb},#{mbCounts},#{mbStartDay},#{mbEndDay},#{isjs},#{jsCounts},#{jsStartDay},#{jsEndDay},
+        #{isxj},#{xjCounts},#{xjcs},#{xjStartDay},#{xjEndDay},#{mbOther});
+    </insert>
+
+    <delete id="deleteManageBooksById" parameterType="int">
+       delete from netbook.managebooks where mbID=#{mbID}
+    </delete>
+
+
+    <update id="updateManageBooks" parameterType="ManageBooks">
+        update netbook.managebooks
+        set uid=#{uid},bookID=#{bookID},ismb=#{ismb},mbCounts=#{mbCounts},mbStartDay=#{mbStartDay},mbEndDay=#{mbEndDay},
+        isjs=#{isjs},jsCounts=#{jsCounts},jsStartDay=#{jsStartDay},jsEndDay=#{jsEndDay},isxj=#{isxj},xjCounts=#{xjCounts}
+        ,xjcs=#{xjcs},xjStartDay=#{xjStartDay},xjEndDay=#{xjEndDay},mbOther=#{mbOther}
+        where mbID=#{mbID};
+    </update>
+
+    <select id="queryManageBooksById" resultType="ManageBooks">
+        select * from netbook.managebooks
+        where mbID=#{mbID};
+    </select>
+
+    <select id="queryAllManageBooks" resultType="ManageBooks">
+        select * from netbook.managebooks
+    </select>
+
+</mapper>
